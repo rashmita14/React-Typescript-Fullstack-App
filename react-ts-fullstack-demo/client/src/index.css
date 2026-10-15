@@ -1,0 +1,15 @@
+:root {
+  font-family: 'Avenir Next', Avenir, 'Segoe UI', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #222a21;
+  background: #f5f5ef;
+  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+body { min-width: 320px; min-height: 100vh; margin: 0; background-image: radial-gradient(#d9ddd1 0.6px, transparent 0.6px); background-size: 17px 17px; }
+button, input { font: inherit; }
+button:focus-visible, input:focus-visible { outline: 2px solid #b4543b; outline-offset: 2px; }
