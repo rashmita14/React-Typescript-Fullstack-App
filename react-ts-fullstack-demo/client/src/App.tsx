@@ -1,10 +1,15 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { Button } from './components/Button';
 import { addTodo, deleteTodo, fetchTodos, toggleTodo } from './api/todos';
+import { getCurrentUser, signOut, type AuthUser } from './api/auth';
+import { AuthScreen } from './components/AuthScreen';
 import type { Todo } from './types';
 import './App.css';
 
 export default function App() {
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [sessionLoading, setSessionLoading] = useState<boolean>(true);
+  const [authError, setAuthError] = useState<string | null>(null);
   const [count, setCount] = useState<number>(0);
   const [todos, setTodos] = useState<Todo[]>([]);
   const [text, setText] = useState<string>('');
@@ -12,11 +17,30 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    getCurrentUser()
+      .then(setUser)
+      .catch(() => setAuthError('Unable to reach the server. Check that the API is running.'))
+      .finally(() => setSessionLoading(false));
+  }, []);
+
+  useEffect(() => {
+    if (!user) {
+      setTodos([]);
+      setLoading(false);
+      return;
+    }
+    setLoading(true);
     fetchTodos()
       .then(setTodos)
       .catch((err: Error) => setError(err.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, [user]);
+
+  const handleSignOut = async () => {
+    await signOut();
+    setUser(null);
+    setError(null);
+  };
 
   const handleAdd = async (event: FormEvent) => {
     event.preventDefault();
@@ -51,8 +75,16 @@ export default function App() {
     }
   };
 
+  if (sessionLoading) {
+    return <main className="session-loading" role="status">Restoring your space...</main>;
+  }
+  if (!user) {
+    return <AuthScreen initialMessage={authError} onAuthenticated={setUser} />;
+  }
+
   return (
     <main className="app">
+      <div className="account-bar"><span>{user.email}</span><button type="button" onClick={handleSignOut}>Sign out</button></div>
       <header className="page-heading">
         <p className="eyebrow">A LITTLE WORK IN PROGRESS</p>
         <h1>Make room<br />for what matters.</h1>

@@ -4,18 +4,30 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
+    "dev:uat": "DOTENV_CONFIG_PATH=.env.uat tsx watch src/index.ts",
+    "dev:qa": "DOTENV_CONFIG_PATH=.env.qa tsx watch src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "build:uat": "tsc --outDir dist/uat",
+    "build:qa": "tsc --outDir dist/qa",
+    "build:prod": "tsc --outDir dist/prod",
+    "start": "node dist/index.js",
+    "start:uat": "DOTENV_CONFIG_PATH=.env.uat node dist/uat/index.js",
+    "start:qa": "DOTENV_CONFIG_PATH=.env.qa node dist/qa/index.js",
+    "start:prod": "DOTENV_CONFIG_PATH=.env.prod node dist/prod/index.js"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^18.0.7",
     "express": "^5.3.0",
+    "express-rate-limit": "^8.7.1",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.11.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^26.6.5",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"

@@ -1,4 +1,7 @@
 .app { width: min(100% - 40px, 980px); margin: 0 auto; padding: 34px 0 22px; }
+.account-bar { display: flex; align-items: center; justify-content: flex-end; gap: 14px; color: #70776b; font-size: 12px; overflow-wrap: anywhere; }
+.account-bar button { padding: 5px 0; border: 0; background: none; color: #a34430; cursor: pointer; font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.session-loading { display: grid; min-height: 100vh; place-items: center; color: #70776b; font-size: 13px; }
 .page-heading { padding: 48px 0 42px; animation: appear 450ms ease-out both; }
 .eyebrow, .footer, .todo-count { color: #70776b; font: 10px/1.4 var(--mono); letter-spacing: .06em; }
 .eyebrow { margin: 0 0 13px; }
@@ -31,5 +34,5 @@
 .footer { display: flex; justify-content: space-between; padding: 25px 0 0; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }
 @keyframes appear { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-@media (max-width: 680px) { .app { width: min(100% - 28px, 520px); } .page-heading { padding: 42px 0 32px; } .demo-grid { grid-template-columns: 1fr; gap: 12px; } .card { padding: 20px; } }
+@media (max-width: 680px) { .app { width: min(100% - 28px, 520px); } .page-heading { padding: 42px 0 32px; } .demo-grid { grid-template-columns: 1fr; gap: 12px; } .card { padding: 20px; } .account-bar { gap: 9px; font-size: 11px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; } }

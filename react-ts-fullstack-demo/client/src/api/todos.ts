@@ -5,6 +5,7 @@ const BASE = '/api/todos';
 async function request<T>(url: string, init?: RequestInit): Promise<T> {
   const response = await fetch(url, {
     headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
     ...init,
   });
   if (!response.ok) throw new Error(`Request failed (${response.status})`);

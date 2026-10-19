@@ -4,6 +4,7 @@ const todoSchema = new Schema(
   {
     text: { type: String, required: true, trim: true, maxlength: 200 },
     done: { type: Boolean, default: false },
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
   },
   { timestamps: true },
 );
