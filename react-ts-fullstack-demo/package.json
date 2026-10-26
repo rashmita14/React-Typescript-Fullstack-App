@@ -3,11 +3,17 @@
   "private": true,
   "scripts": {
     "dev": "concurrently -n server,client -c blue,green \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "dev:next": "concurrently -n server,next -c blue,green \"npm run dev --prefix server\" \"npm run dev --prefix next-client\"",
     "build": "npm run build --prefix server && npm run build --prefix client",
+    "build:next": "npm run build --prefix next-client",
+    "capacitor:sync": "npm run build --prefix next-client && npm run cap:sync --prefix next-client",
+    "cordova:prepare": "npm run build --prefix next-client && node next-client/scripts/copy-to-cordova.mjs",
+    "cordova:build": "npm run cordova:prepare && npx cordova build --project-dir mobile/cordova",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down"
   },
   "devDependencies": {
-    "concurrently": "^10.0.6"
+    "concurrently": "^10.0.6",
+    "cordova": "^13.0.0"
   }
 }

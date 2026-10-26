@@ -7,7 +7,7 @@ import todoRoutes from './routes/todos.js';
 
 const PORT = Number(process.env.PORT) || 5001;
 const MONGODB_URI = process.env.MONGODB_URI ?? 'mongodb://127.0.0.1:27017/react-ts-demo';
-const CORS_ORIGINS = (process.env.CORS_ORIGINS ?? 'http://localhost:5173')
+const CORS_ORIGINS = (process.env.CORS_ORIGINS ?? 'http://localhost:5173,http://localhost:3000,http://localhost,https://localhost,capacitor://localhost')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);

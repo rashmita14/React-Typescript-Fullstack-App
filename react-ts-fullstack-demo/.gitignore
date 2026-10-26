@@ -5,3 +5,8 @@ dist
 !.env.example
 !.env.*.example
 .DS_Store
+/next-client/out/
+/mobile/cordova/platforms/
+/mobile/cordova/plugins/
+/mobile/cordova/www/*
+!/mobile/cordova/www/.gitkeep
