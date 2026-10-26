@@ -441,7 +441,9 @@ Write simple, clean styles for `.app`, `.card`, `.row` (flex, gap), `.btn`, `.bt
     "build:next": "npm run build --prefix next-client",
     "capacitor:sync": "npm run build --prefix next-client && npm run cap:sync --prefix next-client",
     "cordova:prepare": "npm run build --prefix next-client && node next-client/scripts/copy-to-cordova.mjs",
-    "cordova:build": "npm run cordova:prepare && npx cordova build --project-dir mobile/cordova",
+    "cordova:add:android": "npm run platform:add:android --prefix mobile/cordova",
+    "cordova:add:ios": "npm run platform:add:ios --prefix mobile/cordova",
+    "cordova:build": "npm run cordova:prepare && npm run build --prefix mobile/cordova",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down"
   },
@@ -480,6 +482,18 @@ mobile/cordova/www/*
 .DS_Store
 ```
 
+In `mobile/cordova/package.json`, include:
+```json
+{
+  "scripts": {
+    "build": "cordova build",
+    "platform:add:android": "cordova platform add android",
+    "platform:add:ios": "cordova platform add ios"
+  }
+}
+```
+Run them through root scripts so npm executes Cordova from the correct project directory.
+
 ## Running the app (tell the user at the end)
 
 1. Start MongoDB, using one of:
@@ -489,7 +503,7 @@ mobile/cordova/www/*
 2. From the project root: `npm run dev`
 3. Open http://localhost:5173. The API runs at http://localhost:5000/api/todos.
 4. Run `npm run dev:next` to start the Next.js client with the API at http://localhost:3000.
-5. Run `npm run capacitor:sync` to build/sync Capacitor, or `npm run cordova:build` after adding a Cordova platform. Android Studio or Xcode is required for native builds.
+5. Run `npm run capacitor:sync` to build/sync Capacitor, or `npm run cordova:add:android` / `npm run cordova:add:ios` before `npm run cordova:build`. Android Studio or Xcode is required for native builds.
 
 ## Rules
 

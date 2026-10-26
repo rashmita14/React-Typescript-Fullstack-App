@@ -8,7 +8,9 @@
     "build:next": "npm run build --prefix next-client",
     "capacitor:sync": "npm run build --prefix next-client && npm run cap:sync --prefix next-client",
     "cordova:prepare": "npm run build --prefix next-client && node next-client/scripts/copy-to-cordova.mjs",
-    "cordova:build": "npm run cordova:prepare && npx cordova build --project-dir mobile/cordova",
+    "cordova:add:android": "npm run platform:add:android --prefix mobile/cordova",
+    "cordova:add:ios": "npm run platform:add:ios --prefix mobile/cordova",
+    "cordova:build": "npm run cordova:prepare && npm run build --prefix mobile/cordova",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down"
   },

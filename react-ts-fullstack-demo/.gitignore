@@ -6,6 +6,8 @@ dist
 !.env.*.example
 .DS_Store
 /next-client/out/
+/next-client/.next/
+/next-client/*.tsbuildinfo
 /mobile/cordova/platforms/
 /mobile/cordova/plugins/
 /mobile/cordova/www/*

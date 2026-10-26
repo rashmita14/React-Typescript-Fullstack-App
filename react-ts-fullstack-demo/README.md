@@ -20,7 +20,7 @@ cp server/.env.example server/.env
 cp next-client/.env.example next-client/.env.local
 ```
 
-Do not overwrite existing `.env` files. Set a suitable `NEXT_PUBLIC_API_URL` in `next-client/.env.local` before building the mobile app. A physical device needs an API address it can reach; `localhost` on a phone or emulator is not the development computer. Set `CORS_ORIGINS` in `server/.env` to include the web or native app origin.
+Do not overwrite existing `.env` files. Set a suitable `NEXT_PUBLIC_API_URL` in `next-client/.env.local` before building the mobile app. A physical device needs an API address it can reach; `localhost` on a phone or emulator is not the development computer. Set `CORS_ORIGINS` in `server/.env` to include the web or native app origin, and allow the API host in Cordova's `mobile/cordova/config.xml`.
 
 The server listens on port 5001 by default. Start MongoDB with `npm run db:up` when using Docker.
 
@@ -50,11 +50,11 @@ npm run capacitor:sync
 **Cordova**
 
 ```bash
-npx cordova platform add android --project-dir mobile/cordova
+npm run cordova:add:android
 npm run cordova:build
 ```
 
-`cordova:build` builds Next.js, copies the static export into `mobile/cordova/www`, and builds installed Cordova platforms. Native builds require the relevant platform SDKs. Before a production mobile build, set `NEXT_PUBLIC_API_URL` to a deployed HTTPS API, allow the app's native origin in the API CORS configuration, and update Cordova's `<access>` origin in `mobile/cordova/config.xml` to the production API host.
+Use `npm run cordova:add:ios` for iOS. `cordova:build` builds Next.js, copies the static export into `mobile/cordova/www`, and builds installed Cordova platforms. Native builds require the relevant platform SDKs. Before a production mobile build, set `NEXT_PUBLIC_API_URL` to a deployed HTTPS API, allow the app's native origin in the API CORS configuration, and update Cordova's `<access>` origin in `mobile/cordova/config.xml` to the production API host.
 
 ## Build
 
