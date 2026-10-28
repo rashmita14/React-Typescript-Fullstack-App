@@ -33,6 +33,7 @@ npm run dev:next  # Next.js client and API
 
 - Vite: http://localhost:5173
 - Next.js: http://localhost:3000
+- UI examples: http://localhost:3001/examples
 - API health: http://localhost:5001/api/health
 
 ## Mobile
@@ -66,3 +67,5 @@ npm run cordova:prepare
 ```
 
 The API provides account registration/sign-in and authenticated todo CRUD. Vite and Next.js clients use the same API and database.
+
+The Next.js app's `/examples` page contains interactive patterns for queued toasts, nested comments, responsive navigation, animated tabs, a filterable/sortable/paginated table, optimistic updates with rollback, polling chat, click throttling, and configurable accordions.

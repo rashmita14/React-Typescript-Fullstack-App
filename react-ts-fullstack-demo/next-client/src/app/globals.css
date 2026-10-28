@@ -22,3 +22,24 @@ button,
 input {
   font: inherit;
 }
+
+@keyframes tab-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-panel-enter {
+  animation: tab-panel-enter 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-panel-enter {
+    animation: none;
+  }
+}

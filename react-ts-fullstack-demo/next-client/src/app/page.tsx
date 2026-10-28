@@ -97,11 +97,14 @@ export default function Home() {
     <main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col px-5 py-8 sm:px-8 sm:py-12">
       <header className="mb-10 flex items-center justify-between">
         <span className="text-xs font-semibold tracking-[0.2em] text-emerald-800">ONE THING AT A TIME</span>
-        {user && (
-          <button className="rounded-full border border-stone-300 px-4 py-2 text-sm hover:bg-white" onClick={handleSignOut}>
-            Sign out
-          </button>
-        )}
+        <div className="flex items-center gap-3">
+          <a className="rounded-full border border-stone-300 px-4 py-2 text-sm hover:bg-white" href="/examples">UI examples</a>
+          {user && (
+            <button className="rounded-full border border-stone-300 px-4 py-2 text-sm hover:bg-white" onClick={handleSignOut}>
+              Sign out
+            </button>
+          )}
+        </div>
       </header>
 
       {!user ? (
